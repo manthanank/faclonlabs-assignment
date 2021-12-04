@@ -1,0 +1,142 @@
+<!-- Card container that binds all togather -->
+<mat-card>
+  <!-- Actual content starts from here -->
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="2:2">
+      <mat-grid-tile>
+        <form [formGroup]="formValue">
+          <table>
+            <td>
+              <br />
+              <mat-form-field>
+                <mat-select formControlName="Sr" placeholder="Sr.">
+                  <mat-option value="Mr">Mr</mat-option>
+                  <mat-option value="Mrs">Mrs</mat-option>
+                  <mat-option value="Miss">Miss</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <tr>
+              <td>
+                <mat-form-field class="demo-full-width">
+                  <input
+                    formControlName="firstname"
+                    matInput
+                    placeholder="First Name"
+                  />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="demo-full-width">
+                  <input
+                    formControlName="LastName"
+                    matInput
+                    placeholder="Last Name"
+                  />
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <mat-form-field class="demo-full-width">
+                  <textarea
+                    formControlName="address"
+                    matInput
+                    placeholder="Address"
+                    matTextareaAutosize
+                    matAutosizeMinRows="2"
+                    matAutosizeMaxRows="5"
+                  ></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <mat-form-field class="demo-full-width">
+                  <input
+                    formControlName="DOB"
+                    matInput
+                    [matDatepicker]="picker"
+                    placeholder="Date of birth"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>Gender</span><br /><br />
+                <mat-radio-group formControlName="gender">
+                  <mat-radio-button value="Male">Male</mat-radio-button>
+                  <mat-radio-button value="Female">Female</mat-radio-button>
+                </mat-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <mat-form-field class="demo-full-width">
+                  <input formControlName="email" matInput placeholder="Email" />
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="content-center">
+                <button mat-raised-button color="accent" *ngIf="showAdd" id="add" class="btn btn-primary" (click)="postFormDetails()">Add</button>
+                <button mat-raised-button color="accent" *ngIf="showUpdate" id="add" class="btn btn-primary" (click)="updateFormdetails()">Update</button>
+                <button mat-raised-button color="accent" id="cancel">Cancel</button>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+            </tr>
+          </table>
+        </form>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <table mat-table class="mat-elevation-z8">
+          <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Position Column -->
+          <ng-container>
+            <thead>
+              <tr>
+                <th mat-header-cell>Sr.</th>
+                <th mat-header-cell>First Name</th>
+                <th mat-header-cell>Last Name</th>
+                <th mat-header-cell>Address</th>
+                <th mat-header-cell>Date of Birth</th>
+                <th mat-header-cell>E mail</th>
+                <th mat-header-cell>Gender</th>
+                <th mat-header-cell>Action Buttons</th>
+              </tr>
+            </thead>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container>
+            <tbody>
+              <tr *ngFor="let row of formData">
+                <td mat-cell>{{row.sr}}</td>
+                <td mat-cell>{{row.firstname}}</td>
+                <td mat-cell>{{row.lastname}}</td>
+                <td mat-cell>{{row.address}}</td>
+                <td mat-cell>{{row.dob}}</td>
+                <td mat-cell>{{row.email}}</td>
+                <td mat-cell>{{row.gender}}</td>
+                <td>
+                  <button id="add" class="btn btn-primary" (click)="onEdit(row)">Edit</button>
+                  <button (click)="deleteFormdata(row)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </ng-container>
+        </table>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
