@@ -1,0 +1,55 @@
+<p>
+  <mat-toolbar color="accent">
+    <span routerLink="">Home</span> &nbsp;
+    <a routerLink="/content" (click)="clickAddInform()">Content</a>
+  </mat-toolbar>
+</p>
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <form [formGroup]="formValue">
+          <mat-form-field class="form-element">
+            <input matInput placeholder="User Id" formControlName="id">
+          </mat-form-field><br />
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Name" formControlName="name">
+          </mat-form-field><br />
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Email Address" formControlName="email">
+          </mat-form-field><br />
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Address" formControlName="address">
+          </mat-form-field><br />
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Number" formControlName="number">
+          </mat-form-field><br />
+          <button mat-raised-button type="submit" color="primary" *ngIf="showUpdate" (click)="postUserDetails()">Add</button>
+          <button mat-raised-button type="submit" color="primary" *ngIf="showAdd" (click)="updateUserDetails()">Update</button>
+          <button mat-raised-button id="cancel" color="primary">Cancel</button>
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <table>
+      <thead>
+        <th>UserId</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Number</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of formData">
+          <td>{{row.id}}</td>
+          <td>{{row.name}}</td>
+          <td>{{row.email}}</td>
+          <td>{{row.address}}</td>
+          <td>{{row.number}}</td>
+          <td>
+            <button (click)="onEdit(row)">Edit</button>
+            <button (click)="deleteUserDetails(row)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-grid-tile>
+</mat-grid-list>
