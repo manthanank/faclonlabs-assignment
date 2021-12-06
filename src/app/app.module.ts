@@ -7,9 +7,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MatConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

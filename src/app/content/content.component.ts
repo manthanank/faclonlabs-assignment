@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms'
 import { DataService } from '../shared/data.service';
 import { ContentModel } from './content.model';
 import { Validators ,FormsModule,NgForm } from '@angular/forms';
-
+// import { DialogService } from '../shared/dialog.service';
+// import { NotificationService } from '../shared/notification.service';
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -16,6 +17,7 @@ export class ContentComponent implements OnInit {
   formData !: any;
   showAdd ! : boolean;
   showUpdate ! : boolean;
+
   ngOnInit():void {
     this.formValue = this.formbuilder.group({
       id: [null, Validators.required],
@@ -42,7 +44,7 @@ export class ContentComponent implements OnInit {
       console.log('res')
       alert("added")
       let ref = document.getElementById('cancel')
-      ref?.click();
+      ref ?.click();
       this.formValue.reset();
       this.getAllUser();
     },
@@ -57,24 +59,28 @@ export class ContentComponent implements OnInit {
     })
   }
   deleteUserDetails(row:any){
-    this.data.deleteUser(row.id)
-    .subscribe(res =>{
-      alert('deleted')
-      this.getAllUser();
+     this.data.deleteUser(row.id)
+     .subscribe(res =>{
+       this.getAllUser();
     })
+    // this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+    // .afterClosed().subscribe(res =>{
+    //   if(res){
+    //     this.data.deleteUser(row.id);
+    //     this.notificationService.warn('! Deleted successfully');
+    //   }
+    // });
   }
   onEdit(row:any){
     this.showAdd = false;
     this.showUpdate = true;
     this.contentModelObj.id = row.id;
-    this.formValue.controls['id'].setValue(row.id);
     this.formValue.controls['name'].setValue(row.name);
     this.formValue.controls['email'].setValue(row.email);
     this.formValue.controls['address'].setValue(row.address);
     this.formValue.controls['number'].setValue(row.number);
   }
   updateUserDetails(){
-    this.contentModelObj.id = this.formValue.value.id;
     this.contentModelObj.name = this.formValue.value.name;
     this.contentModelObj.email = this.formValue.value.email;
     this.contentModelObj.address = this.formValue.value.address;
@@ -84,9 +90,9 @@ export class ContentComponent implements OnInit {
       {
         alert('updated')
         let ref = document.getElementById('cancel')
-      ref?.click();
-      this.formValue.reset();
-      this.getAllUser();
+        ref?.click();
+        this.formValue.reset();
+        this.getAllUser();
       })
   }
 }

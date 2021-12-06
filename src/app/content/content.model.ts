@@ -1,5 +1,5 @@
 export class ContentModel{
-  id: string = '';
+  id: number = 0;
   name: string = '';
   email: string = '';
   address: string = '';

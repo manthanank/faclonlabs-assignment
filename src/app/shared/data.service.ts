@@ -21,7 +21,7 @@ export class DataService {
       return res;
     }))
   }
-  updateUser(id:number,data: any){
+  updateUser(data: any,id: number){
     return this.http.put<any>("http://localhost:3000/posts/"+id,data)
     .pipe(map((res:any)=>{
       return res;

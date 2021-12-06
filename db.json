@@ -1,22 +1,5 @@
 {
-  "posts": [
-    {
-      "userid": "",
-      "name": "Manthan Ankolekar",
-      "email": "manthan.ank46@gmail.com",
-      "address": "karwar",
-      "number": "860283359",
-      "id": 5
-    },
-    {
-      "userid": "",
-      "name": "Manthan Ankolekar",
-      "email": "manthan.ank46@gmail.com",
-      "address": "goa",
-      "number": "8105068268",
-      "id": 6
-    }
-  ],
+  "posts": [],
   "comments": [],
   "profile": {
     "name": "typicode"
