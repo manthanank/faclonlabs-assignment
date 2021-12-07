@@ -1,5 +1,13 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "id": 1,
+      "name": "Manthan",
+      "email": "manthan.ank46@gmail.com",
+      "address": "ggegewewgh",
+      "number": 22555577
+    }
+  ],
   "comments": [],
   "profile": {
     "name": "typicode"
