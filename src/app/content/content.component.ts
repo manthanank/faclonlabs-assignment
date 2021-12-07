@@ -1,47 +1,52 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms'
 import { DataService } from '../shared/data.service';
 import { ContentModel } from './content.model';
 import { Validators ,FormsModule,NgForm } from '@angular/forms';
-// import { DialogService } from '../shared/dialog.service';
-// import { NotificationService } from '../shared/notification.service';
+import { MatDialog } from "@angular/material/dialog";
+
+
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
 })
+
+
 export class ContentComponent implements OnInit {
   formValue !: FormGroup;
-  constructor(private formbuilder: FormBuilder,private data : DataService) { }
+  constructor(private formbuilder: FormBuilder,private data : DataService,private dialog: MatDialog) { }
   contentModelObj: ContentModel = new ContentModel();
   formData !: any;
-  showAdd ! : boolean;
-  showUpdate ! : boolean;
+  //showAdd ! : boolean;
+  //showUpdate ! : boolean;
 
   ngOnInit():void {
     this.formValue = this.formbuilder.group({
-      id: [null, Validators.required],
       name: [null, Validators.required],
       email: [null, Validators.compose([Validators.required,Validators.email])],
-      address: [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
+      address: [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(500)])],
       number: [null, Validators.required]
     })
     this.getAllUser();
   }
-  clickAddInform(){
-    this.formValue.reset();
-    this.showAdd = true;
-    this.showUpdate = false;
-  }
+  onSubmit() {
+  // TODO: Use EventEmitter with form value
+  console.warn(this.formValue.value);
+}
+  // clickAddInform(){
+  //   this.formValue.reset();
+  //   this.showAdd = true;
+  //   this.showUpdate = false;
+  // }
   postUserDetails(){
-    this.contentModelObj.id = this.formValue.value.id;
     this.contentModelObj.name = this.formValue.value.name;
     this.contentModelObj.email = this.formValue.value.email;
     this.contentModelObj.address = this.formValue.value.address;
     this.contentModelObj.number = this.formValue.value.number;
     this.data.postUser(this.contentModelObj)
     .subscribe(res=>{
-      console.log('res')
+      console.log(res);
       alert("added")
       let ref = document.getElementById('cancel')
       ref ?.click();
@@ -61,19 +66,13 @@ export class ContentComponent implements OnInit {
   deleteUserDetails(row:any){
      this.data.deleteUser(row.id)
      .subscribe(res =>{
+       alert('Deleted')
        this.getAllUser();
     })
-    // this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
-    // .afterClosed().subscribe(res =>{
-    //   if(res){
-    //     this.data.deleteUser(row.id);
-    //     this.notificationService.warn('! Deleted successfully');
-    //   }
-    // });
   }
   onEdit(row:any){
-    this.showAdd = false;
-    this.showUpdate = true;
+    //this.showAdd = false;
+    //this.showUpdate = true;
     this.contentModelObj.id = row.id;
     this.formValue.controls['name'].setValue(row.name);
     this.formValue.controls['email'].setValue(row.email);
@@ -94,5 +93,8 @@ export class ContentComponent implements OnInit {
         this.formValue.reset();
         this.getAllUser();
       })
+  }
+  openDialog(){
+    this.dialog.open(ContentComponent)
   }
 }

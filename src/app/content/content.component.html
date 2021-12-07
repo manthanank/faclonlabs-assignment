@@ -1,35 +1,28 @@
-<p>
-  <mat-toolbar color="accent">
-    <a routerLink="/content" (click)="clickAddInform()">Content</a>
-  </mat-toolbar>
-</p>
-<mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile>
-    <form [formGroup]="formValue">
+
+<mat-grid-list cols="2" rowHeight="2:2">
+  <mat-grid-tile row="2">
+    <form [formGroup]="formValue" (ngSubmit)="onSubmit()">
           <mat-form-field class="form-element" appearance="fill">
-            <input matInput placeholder="User Id" formControlName="id" type="number">
-          </mat-form-field><br />
-          <mat-form-field class="form-element">
             <input matInput placeholder="Name" formControlName="name" type="text">
           </mat-form-field><br />
-          <mat-form-field class="form-element">
+          <mat-form-field class="form-element" appearance="fill">
             <input matInput placeholder="Email Address" formControlName="email" type="email">
           </mat-form-field><br />
-          <mat-form-field class="form-element">
+          <mat-form-field class="form-element" appearance="fill">
             <input matInput placeholder="Address" formControlName="address" type="text">
           </mat-form-field><br />
-          <mat-form-field class="form-element">
-            <input matInput placeholder="Number" formControlName="number" >
+          <mat-form-field class="form-element" appearance="fill">
+            <input matInput placeholder="Number" formControlName="number" type="number">
           </mat-form-field><br />
-          <button mat-raised-button type="submit" color="primary" *ngIf="showAdd" (click)="postUserDetails()">Add</button>
-          <button mat-raised-button type="submit" color="primary" *ngIf="showUpdate" (click)="updateUserDetails()">Update</button>
-          <button mat-raised-button id="cancel" color="primary">Cancel</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!formValue.valid" (click)="postUserDetails()">Add</button> &nbsp;
+          <button mat-raised-button color="accent" type="submit" [disabled]="!formValue.valid" (click)="updateUserDetails()">Update</button> &nbsp;
+          <button mat-raised-button color="warn" id="cancel">Cancel</button>
     </form>
   </mat-grid-tile>
   <mat-grid-tile>
-    <table>
+    <div class="mat-elevation-z8">
+    <table mat-table>
       <thead>
-        <th>UserId</th>
         <th>Name</th>
         <th>Email</th>
         <th>Address</th>
@@ -38,17 +31,21 @@
       </thead>
       <tbody>
         <tr *ngFor="let row of formData">
-          <td>{{row.id}}</td>
           <td>{{row.name}}</td>
           <td>{{row.email}}</td>
           <td>{{row.address}}</td>
           <td>{{row.number}}</td>
           <td>
             <button mat-raised-button type="submit" color="primary" (click)="onEdit(row)">Edit</button>
-            <button (click)="deleteUserDetails(row)">Delete</button>
+            <button mat-raised-button color="warn" (click)="deleteUserDetails(row)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
+    <mat-paginator [pageSizeOptions]="[5, 10]"
+                 showFirstLastButtons>
+  </mat-paginator>
+</div>
   </mat-grid-tile>
 </mat-grid-list>
+

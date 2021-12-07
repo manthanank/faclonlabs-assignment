@@ -9,6 +9,9 @@ import {ReactiveFormsModule} from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   imports: [
     ContentRoutingModule,
@@ -16,10 +19,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
+    MatPaginatorModule,
+    MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
   ],
   declarations: [ContentComponent]
 })
