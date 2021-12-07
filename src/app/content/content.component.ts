@@ -24,7 +24,6 @@ export class ContentComponent implements OnInit {
   dialogRef: any;
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
-      id: [null, Validators.required],
       name: [null, Validators.required],
       email: [null, Validators.compose([Validators.required, Validators.email])],
       address: [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(500)])],
@@ -42,7 +41,6 @@ export class ContentComponent implements OnInit {
   //   this.showUpdate = false;
   // }
   postUserDetails() {
-    this.contentModelObj.id = this.formValue.value.id;
     this.contentModelObj.name = this.formValue.value.name;
     this.contentModelObj.email = this.formValue.value.email;
     this.contentModelObj.address = this.formValue.value.address;
@@ -91,7 +89,6 @@ export class ContentComponent implements OnInit {
     this.formValue.controls['number'].setValue(row.number);
   }
   updateUserDetails() {
-    this.contentModelObj.id = this.formValue.value.id;
     this.contentModelObj.name = this.formValue.value.name;
     this.contentModelObj.email = this.formValue.value.email;
     this.contentModelObj.address = this.formValue.value.address;
