@@ -1,51 +1,101 @@
-
 <mat-grid-list cols="2" rowHeight="2:2">
   <mat-grid-tile row="2">
     <form [formGroup]="formValue" (ngSubmit)="onSubmit()">
-          <mat-form-field class="form-element" appearance="fill">
-            <input matInput placeholder="Name" formControlName="name" type="text">
-          </mat-form-field><br />
-          <mat-form-field class="form-element" appearance="fill">
-            <input matInput placeholder="Email Address" formControlName="email" type="email">
-          </mat-form-field><br />
-          <mat-form-field class="form-element" appearance="fill">
-            <input matInput placeholder="Address" formControlName="address" type="text">
-          </mat-form-field><br />
-          <mat-form-field class="form-element" appearance="fill">
-            <input matInput placeholder="Number" formControlName="number" type="number">
-          </mat-form-field><br />
-          <button mat-raised-button color="primary" type="submit" [disabled]="!formValue.valid" (click)="postUserDetails()">Add</button> &nbsp;
-          <button mat-raised-button color="accent" type="submit" [disabled]="!formValue.valid" (click)="updateUserDetails()">Update</button> &nbsp;
-          <button mat-raised-button color="warn" id="cancel">Cancel</button>
+      <mat-form-field class="form-element" appearance="fill">
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          type="text"
+        /> </mat-form-field
+      ><br />
+      <mat-form-field class="form-element" appearance="fill">
+        <input
+          matInput
+          placeholder="Email Address"
+          formControlName="email"
+          type="email"
+        /> </mat-form-field
+      ><br />
+      <mat-form-field class="form-element" appearance="fill">
+        <input
+          matInput
+          placeholder="Address"
+          formControlName="address"
+          type="text"
+        /> </mat-form-field
+      ><br />
+      <mat-form-field class="form-element" appearance="fill">
+        <input
+          matInput
+          placeholder="Number"
+          formControlName="number"
+          type="number"
+        /> </mat-form-field
+      ><br />
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!formValue.valid"
+        (click)="postUserDetails()"
+      >
+        Add
+      </button>
+      &nbsp;
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        [disabled]="!formValue.valid"
+        (click)="updateUserDetails()"
+      >
+        Update
+      </button>
+      &nbsp;
+      <button mat-raised-button color="warn" id="cancel">Cancel</button>
     </form>
   </mat-grid-tile>
   <mat-grid-tile>
     <div class="mat-elevation-z8">
-    <table mat-table>
-      <thead>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Number</th>
-        <th>Actions</th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let row of formData">
-          <td>{{row.name}}</td>
-          <td>{{row.email}}</td>
-          <td>{{row.address}}</td>
-          <td>{{row.number}}</td>
-          <td>
-            <button mat-raised-button type="submit" color="primary" (click)="onEdit(row)">Edit</button>
-            <button mat-raised-button color="warn" (click)="deleteUserDetails(row)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <mat-paginator [pageSizeOptions]="[5, 10]"
-                 showFirstLastButtons>
-  </mat-paginator>
-</div>
+      <table mat-table>
+        <thead>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Number</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of formData">
+            <td>{{ row.id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.email }}</td>
+            <td>{{ row.address }}</td>
+            <td>{{ row.number }}</td>
+            <td>
+              <button
+                mat-raised-button
+                type="submit"
+                color="primary"
+                (click)="onEdit(row)"
+              >
+                Edit
+              </button>
+              <button
+                mat-raised-button
+                color="warn"
+                (click)="deleteUserDetails(row)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons>
+      </mat-paginator>
+    </div>
   </mat-grid-tile>
 </mat-grid-list>
-
