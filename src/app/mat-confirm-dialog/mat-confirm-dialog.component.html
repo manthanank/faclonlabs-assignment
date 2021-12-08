@@ -1,5 +1,8 @@
-<h1 mat-dialog-title>Hi {{ data.name }}</h1>
+<h1 mat-dialog-title>Are You Sure Want to delete ()</h1>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close="true">Yes</button>&nbsp;
-  <button mat-button [mat-dialog-close]="false">No</button>
+  <button mat-raised-button color="warn" mat-dialog-close="true">Yes</button
+  >&nbsp;
+  <button mat-raised-button color="ascent" [mat-dialog-close]="false">
+    No
+  </button>
 </mat-dialog-actions>
