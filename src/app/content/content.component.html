@@ -38,6 +38,7 @@
         color="primary"
         type="submit"
         [disabled]="!formValue.valid"
+        *ngIf="showAdd"
         (click)="postUserDetails()"
       >
         Add
@@ -47,6 +48,7 @@
         mat-raised-button
         color="accent"
         type="submit"
+        *ngIf="showUpdate"
         [disabled]="!formValue.valid"
         (click)="updateUserDetails()"
       >

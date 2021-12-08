@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mat-confirm-dialog.component.css']
 })
 export class MatConfirmDialogComponent implements OnInit {
-
+  data: any
   constructor() { }
 
   ngOnInit(): void {

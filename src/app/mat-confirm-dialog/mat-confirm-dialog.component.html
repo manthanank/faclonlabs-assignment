@@ -1,4 +1,5 @@
-<mat-dialog-actions>
-  <button mat-button mat-dialog-close mat-dialog-close="true">Yes</button>&nbsp;
-  <button mat-button mat-dialog-close mat-dialog-close="false">No</button>
+<mat-dialog-actions >
+  {{data.name}}
+  <button mat-button mat-dialog-close="true">Yes</button>&nbsp;
+  <button mat-button [mat-dialog-close]="false">No</button>
 </mat-dialog-actions>

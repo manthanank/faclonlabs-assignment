@@ -1,11 +1,11 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms'
 import { DataService } from '../shared/data.service';
 import { ContentModel } from './content.model';
-import { Validators, FormsModule, NgForm } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { MatDialog } from "@angular/material/dialog";
 import { MatConfirmDialogComponent } from '../mat-confirm-dialog/mat-confirm-dialog.component';
-
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-content',
@@ -16,17 +16,18 @@ import { MatConfirmDialogComponent } from '../mat-confirm-dialog/mat-confirm-dia
 
 export class ContentComponent implements OnInit {
   formValue !: FormGroup;
-  constructor(private formbuilder: FormBuilder, private data: DataService, private dialog: MatDialog) { }
+  constructor(private formbuilder: FormBuilder, private datas: DataService, private dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any) { }
   contentModelObj: ContentModel = new ContentModel();
   formData !: any;
-  //showAdd ! : boolean;
-  //showUpdate ! : boolean;
+  showAdd = true;
+  showUpdate = false;
   dialogRef: any;
   ngOnInit(): void {
+    console.log(this.data);
     this.formValue = this.formbuilder.group({
       name: [null, Validators.required],
       email: [null, Validators.compose([Validators.required, Validators.email])],
-      address: [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(500)])],
+      address: ['mumbai', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(500)])],
       number: [null, Validators.required]
     })
     this.getAllUser();
@@ -35,7 +36,7 @@ export class ContentComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     console.warn(this.formValue.value);
   }
-  // clickAddInform(){
+  // clickAddInform() {
   //   this.formValue.reset();
   //   this.showAdd = true;
   //   this.showUpdate = false;
@@ -45,7 +46,7 @@ export class ContentComponent implements OnInit {
     this.contentModelObj.email = this.formValue.value.email;
     this.contentModelObj.address = this.formValue.value.address;
     this.contentModelObj.number = this.formValue.value.number;
-    this.data.postUser(this.contentModelObj)
+    this.datas.postUser(this.contentModelObj)
       .subscribe(res => {
         console.log(res);
         alert("added")
@@ -59,7 +60,7 @@ export class ContentComponent implements OnInit {
         })
   }
   getAllUser() {
-    this.data.getUser()
+    this.datas.getUser()
       .subscribe(res => {
         this.formData = res;
       })
@@ -67,11 +68,17 @@ export class ContentComponent implements OnInit {
   deleteUserDetails(row: any) {
     this.dialogRef = this.dialog.open(MatConfirmDialogComponent, {
       //disableClose: false
+      data: {
+        name: 'row.name'
+      }
     });
     this.dialogRef.afterClosed().subscribe((result: boolean) => {
+      console.log(result);
       if (result) {
-        this.data.deleteUser(row.id)
+        console.log(result);
+        this.datas.deleteUser(row.id)
           .subscribe(res => {
+            console.log(result);
             this.getAllUser();
           })
       }
@@ -80,8 +87,8 @@ export class ContentComponent implements OnInit {
 
   }
   onEdit(row: any) {
-    //this.showAdd = false;
-    //this.showUpdate = true;
+    this.showAdd = false;
+    this.showUpdate = true;
     this.contentModelObj.id = row.id;
     this.formValue.controls['name'].setValue(row.name);
     this.formValue.controls['email'].setValue(row.email);
@@ -93,7 +100,7 @@ export class ContentComponent implements OnInit {
     this.contentModelObj.email = this.formValue.value.email;
     this.contentModelObj.address = this.formValue.value.address;
     this.contentModelObj.number = this.formValue.value.number;
-    this.data.updateUser(this.contentModelObj, this.contentModelObj.id)
+    this.datas.updateUser(this.contentModelObj, this.contentModelObj.id)
       .subscribe(res => {
         alert('updated')
         let ref = document.getElementById('cancel')
