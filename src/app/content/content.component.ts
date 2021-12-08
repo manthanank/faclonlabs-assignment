@@ -69,7 +69,7 @@ export class ContentComponent implements OnInit {
     this.dialogRef = this.dialog.open(MatConfirmDialogComponent, {
       //disableClose: false
       data: {
-        name: 'row.name'
+        name: 'this.name'
       }
     });
     this.dialogRef.afterClosed().subscribe((result: boolean) => {
