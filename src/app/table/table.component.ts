@@ -14,6 +14,6 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
   }
   fireEvent() {
-    this.childEvent.emit('Hey')
+    this.childEvent.emit('Hey');
   }
 }
