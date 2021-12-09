@@ -8,8 +8,10 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
 })
 export class AppComponent {
   title = 'project';
+  public name = "manthan";
+  public message = '';
   constructor(private dialog: MatDialog) { }
-    openDialog(){
+  openDialog() {
     let dialogRef = this.dialog.open(MatConfirmDialogComponent)
   }
 }

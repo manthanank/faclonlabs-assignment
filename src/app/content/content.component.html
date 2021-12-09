@@ -117,3 +117,6 @@
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
+
+<h1>{{ message }}</h1>
+<app-table (childEvent)="message = $event" [parentData]="name"></app-table>

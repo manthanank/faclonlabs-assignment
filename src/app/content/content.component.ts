@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms'
 import { DataService } from '../shared/data.service';
 import { ContentModel } from './content.model';
@@ -34,6 +34,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 export class ContentComponent implements OnInit {
+  public name = "manthan";
+  public message = "";
   formValue !: FormGroup;
   displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-weight', 'demo-symbol'];
   dataSource = ELEMENT_DATA;

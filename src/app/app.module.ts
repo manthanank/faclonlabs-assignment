@@ -10,11 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table'
+import { MatTableModule } from '@angular/material/table';
+import { HomeComponent } from './home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    MatConfirmDialogComponent
+    MatConfirmDialogComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

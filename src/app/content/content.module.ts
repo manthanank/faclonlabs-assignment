@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TableComponent } from '../table/table.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
     MatToolbarModule,
     MatDialogModule
   ],
-  declarations: [ContentComponent],
+  declarations: [ContentComponent,TableComponent],
   providers: [{ provide: MAT_DIALOG_DATA, useValue: {} }]
 })
 export class ContentModule { }

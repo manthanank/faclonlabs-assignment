@@ -25,6 +25,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  // public name = "manthan";
+  // public message = '';
   ngOnInit(): void {
 
   }
