@@ -9,29 +9,13 @@
   margin: 100px;
   max-width: 500px;
 }
-
-.demo-table {
+.container{
+  text-align: center;
   width: 100%;
-}
-
-.mat-column-demo-position {
-  width: 32px;
-  border-right: 1px solid currentColor;
-  padding-right: 24px;
-  text-align: center;
-}
-
-.mat-column-demo-name {
-  padding-left: 16px;
-  font-size: 20px;
-}
-
-.mat-column-demo-weight {
-  font-style: italic;
-}
-
-.mat-column-demo-symbol {
-  width: 32px;
-  text-align: center;
-  font-weight: bold;
-}
+  height: 20px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  }
+  #btn{
+  font-size: 25px;
+  }

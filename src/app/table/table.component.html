@@ -1,36 +1,17 @@
-<!-- <div class="mat-elevation-z1 demo-table">
+<div class="mat-elevation-z1">
   <table mat-table>
     <thead>
       <th>Name</th>
       <th>Email</th>
       <th>Address</th>
       <th>Number</th>
-      <th>Actions</th>
     </thead>
     <tbody>
-      <tr *ngFor="let row of formData">
-        <td>{{ parentData }}</td>
-        <td>{{ row.email }}</td>
-        <td>{{ row.address }}</td>
-        <td>{{ row.number }}</td>
-        <td>
-          <button
-            mat-raised-button
-            type="submit"
-            color="primary"
-            (click)="onEdit(row)"
-          >
-            Edit
-          </button>
-          &nbsp;
-          <button
-            mat-raised-button
-            color="warn"
-            (click)="deleteUserDetails(row)"
-          >
-            Delete
-          </button>
-        </td>
+      <tr>
+        <td>{{ firstname }}</td>
+      <td>{{ firstname }}</td>
+      <td>{{ firstname }}</td>
+      <td>{{ firstname }}</td>
       </tr>
     </tbody>
   </table>
@@ -40,7 +21,9 @@
     [pageSizeOptions]="[5, 10, 25, 100]"
   >
   </mat-paginator>
-</div> -->
+</div>
+<div class="container">
+  <button (click)="fireEvent()" mat-raised-button color="primary">Show</button>
+</div>
 
-{{ name }}
-<button (click)="fireEvent()" mat-raised-button color="primary">Show</button>
+

@@ -111,6 +111,5 @@ export class ContentComponent implements OnInit {
   }
   openDialog() {
     this.dialog.open(ContentComponent)
-
   }
 }

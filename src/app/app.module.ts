@@ -11,14 +11,12 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatConfirmDialogComponent,
-    HomeComponent,
     HeaderComponent
   ],
   imports: [

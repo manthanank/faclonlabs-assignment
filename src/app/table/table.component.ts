@@ -7,13 +7,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TableComponent implements OnInit {
   //@Input() public parentData: any;
-  @Input('parentData') public name: any;
+  @Input('parentData') public firstname: any;
   @Output() public childEvent = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
   fireEvent() {
-    this.childEvent.emit('Hey');
+    this.childEvent.emit('Hey')
   }
 }
