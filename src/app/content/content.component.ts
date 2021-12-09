@@ -37,14 +37,14 @@ export class ContentComponent implements OnInit {
   formValue !: FormGroup;
   displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-weight', 'demo-symbol'];
   dataSource = ELEMENT_DATA;
-  constructor(private formbuilder: FormBuilder, private datas: DataService, private dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private formbuilder: FormBuilder, private datas: DataService, private dialog: MatDialog) { }
   contentModelObj: ContentModel = new ContentModel();
   formData !: any;
   showAdd = true;
   showUpdate = false;
   dialogRef: any;
   ngOnInit(): void {
-    console.log(this.data);
+    //console.log(this.data);
     this.formValue = this.formbuilder.group({
       name: [null, Validators.required],
       email: [null, Validators.compose([Validators.required, Validators.email])],
@@ -90,7 +90,7 @@ export class ContentComponent implements OnInit {
       height: '200px',
       width: '300px',
       data: {
-        name: 'this.name'
+        name: row.name
       }
     });
     this.dialogRef.afterClosed().subscribe((result: boolean) => {
