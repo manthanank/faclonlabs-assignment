@@ -15,7 +15,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 export class ContentComponent implements OnInit {
-  public name = "manthan";
+  public names = ["manthan", "manthan.ank46@gmail.com", "karwar", "8105068268"];
   public message = "";
   formValue !: FormGroup;
   constructor(private formbuilder: FormBuilder, private datas: DataService, private dialog: MatDialog) { }

@@ -1,7 +1,8 @@
 <div class="container">
   <h1>{{ message }}</h1>
+  <p *ngFor="let name of names">{{ name }}</p>
 </div>
-<app-table (childEvent)="message = $event" [parentData]="name"></app-table>
+<app-table (childEvent)="message = $event" [parentData]="names"></app-table>
 <mat-grid-list cols="2">
   <mat-grid-tile>
     <mat-card class="example-card">
