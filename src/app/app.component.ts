@@ -7,7 +7,7 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'project';
+  title = 'faclonlabs-assignment';
   public name = "manthan";
   public message = '';
   constructor(private dialog: MatDialog) { }
